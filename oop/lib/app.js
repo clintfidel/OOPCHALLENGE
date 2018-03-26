@@ -17,7 +17,7 @@ const _knock = Symbol('knock')
         return 'welcome back home';
       }
       else if (fullName === this.name && knock !== this[_knock]) {
-        return 'who is that! and who do wish to see'
+        return 'who is that! and who do you wish to see?';
       }
       else {
         return 'not identified';
@@ -45,65 +45,68 @@ export class Rooms extends FamilyHouse {
       if(this.entrance === 1) {
         if (fullName === this.name && boysKnock === this[_knock] 
         && room !== this.boysRoom) {
-          return `you are heading for the wrong room, this is ${this.boysRoom}`
+          return `you are heading for the wrong room, this is the ${this.boysRoom}`
         }
         else if (fullName === this.name && boysKnock === this[_knock]){
-          return` ${this.name} you are welcome to ${this.boysRoom}`;
+          return` ${this.name} you are welcome back to the ${this.boysRoom}`;
         }
         else {
-          return `you are not allowed in`
+          return `you are not allowed in`;
         }
       }
       else {
-        return `you are not a member of the family, pls wait in the ${this.GuestRoom}`
+        return `you are not a member of the family, pls wait in the ${this.GuestRoom}`;
       }
     }
 
-    
+    isDressing() {
+      this.dressing = true;
+    }
+
     enterGirlsRoom(fullName,girlsKnock,room) {
       if(this.entrance === 1) {
         if(this.dressing) {
-          return `pls check back later curently dressing up`
+          return `pls check back later curently dressing up`;
         }
         
         else if (fullName === this.name && girlsKnock !== 4){
-          return `hmmmmm doesnt sound like a member of this room`
+          return `hmmmmm doesnt sound like a member of this room`;
         }
        
         else if (fullName === this.name && girlsKnock === 4
           && room !== this.girlsRoom) {
-            return `you are heading for the wrong room, this is ${this.girlsRoom}`
+            return `you are heading for the wrong room, this is ${this.girlsRoom}`;
           }
           else if (fullName === this.name && girlsKnock === 4){
-            return` ${this.name} you are welcome to ${this.boysRoom}`;
+            return` ${this.name} you are welcome to ${this.girlsRoom}`;
           }
           else {
-            return `you are not allowed in`
+            return `you are not allowed in`;
           }
       }
        else {
-          return `you are not a member of the family, pls wait in the ${this.GuestRoom}`
+          return `you are not a member of the family, pls wait in the ${this.GuestRoom}`;
         }
     }
     enterMasterBedRoom(fullName, room, masterKnock) {
       if(this.entrance ===1) {
         if(fullName === this.name && room !== this.masterBedRoom) {
-          return `head for the right room this the ${this.masterBedRoom} room`
+          return `head for the right room this the ${this.masterBedRoom} room`;
         }
         else if (fullName === this.name && masterKnock !== this[_knock] 
         && room === this.masterBedRoom){
-          return `${this.name} you do not have access to this room`
+          return `${this.name} you do not have access to this room`;
         }
         else if (fullName === this.name && room === this.masterBedRoom 
         && masterKnock === this[_knock]){
-          return `welcome to your room ${this.name}`
+          return `welcome to your room ${this.name}`;
         }
         else {
-          return `you are not allowed in here`
+          return `you are not allowed in here`;
         }
       }
       else{
-        return `you are not a family member pls wait in the ${this.GuestRoom}`
+        return `you are not a family member pls wait in the ${this.GuestRoom}`;
       }
     }
     stateReason (reason){
@@ -118,22 +121,20 @@ export class Rooms extends FamilyHouse {
               myReason = `come in! whats the issue?`;
              }
             if(reason === this.reason[2]) {
-               myReason = `come in quicly dear! whats the issue??`
+               myReason = `come in quicly dear! whats the issue??`;
              }
           }
           return myReason;
         }
         else {
-          return `There is no reason.... can i please just come in!`
+          return `There is no reason.... can I please just come in!`;
         }
       }
       else {
-        return `reason should be in word format!`
+        return `reason should be in word format!`;
       }
     }
-    isDressing() {
-      this.dressing = true;
-    }
+   
 }
 export class NotAMember extends Rooms {
   constructor (fullName, boysRoom, girlsRoom,masterBedRoom, guestRoom, knock){
@@ -142,33 +143,33 @@ export class NotAMember extends Rooms {
     enterMasterBedRoom(fullName, room, masterKnock) {
       if(this.entrance ===1) {
         if(fullName === this.name && room !== this.masterBedRoom) {
-          return `head for the right room this the ${this.masterBedRoom} room`
+          return `head for the right room this the ${this.masterBedRoom} room`;
         }
         else if (fullName === this.name && masterKnock !== this[_knock] 
         && room === this.masterBedRoom){
-          return `${this.name} you do not have access to this room`
+          return `${this.name} you do not have access to this room`;
         }
         else if (fullName === this.name && room === this.masterBedRoom 
         && masterKnock === this[_knock]){
-          return `welcome to your room ${this.name}`
+          return `welcome to your room ${this.name}`;
         }
         else {
-          return `you are not allowed in here`
+          return `you are not allowed in here`;
         }
       }
       else{
-        return `you are not a family member pls wait in the ${this.GuestRoom}`
+        return `you are not a family member pls wait in the ${this.GuestRoom}`;
       }
   }
     enterGuestRoom(fullName, room){
         if(fullName === this.name && room === this.GuestRoom){
-          return `welcome ${this.name}, feel at home.`
+          return `welcome ${this.name}, feel at home.`;
        }
         else if (fullName === this.name && room !== this.GuestRoom){
-          return `pls note that you are a guest and you are supposed to in the ${this.GuestRoom}`
+          return `pls note that you are a guest and you are supposed to in the ${this.GuestRoom}`;
         }
        else {
-         return `Pls identify yourself and your purpose`
+         return `Pls identify yourself and your purpose`;
        }
       
     }
