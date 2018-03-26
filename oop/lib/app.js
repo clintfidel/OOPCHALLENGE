@@ -1,5 +1,5 @@
 const _knock = Symbol('knock')
- class FamilyHouse {
+export class FamilyHouse {
     constructor (fullName, boysRoom, girlsRoom, masterBedRoom, guestRoom, knock){
       this.name = fullName;
       this.boysRoom=boysRoom;
@@ -175,4 +175,3 @@ export class NotAMember extends Rooms {
     }
 }
 
-export default FamilyHouse;
